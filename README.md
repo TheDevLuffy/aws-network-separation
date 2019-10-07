@@ -59,7 +59,6 @@ DB_DIAL=[DB용_instance_의_DB_DIALECT]
             "menu": "삼계탕",
             "createdAt": "[timestamp]"
             "updatedAt": "[timestamp]"
-            "deletedAt": "null"
         }
         ```
 
@@ -83,7 +82,6 @@ DB_DIAL=[DB용_instance_의_DB_DIALECT]
             "menu": "삼계탕",
             "createdAt": "[timestamp]"
             "updatedAt": "[timestamp_변경된_시간]"
-            "deletedAt": "null"
         }
         ```
         * ``404 NOT FOUND``
@@ -105,15 +103,13 @@ DB_DIAL=[DB용_instance_의_DB_DIALECT]
        * ``200 OK``
        ```
        {
-            "message": "배달이 완료되었습니다.",
-            "deletedAt": [timestamp]
+            "message": "배달이 완료되었습니다."
        }
        ```
        * ``404 NOT FOUND``
        ```
        {
-            "message": "태풍에 배달 오토바이가 날아가버렸습니다.",
-            "deletedAt": [timestamp]
+            "message": "확인되지 않은 주문입니다."
        }
        ```
 
