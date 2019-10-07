@@ -1,6 +1,8 @@
 # AWS 에서 Network Separation 을 테스트하기 위한 레포지토리입니다.
 
 > 해당 레포지토리는 서버만 띄워놓은 인스턴스의 서버 코드입니다.
+> 모든 데이터는 json 으로 주고 받습니다.
+> Express RESTful API 입니다.
 
 ## 서버 실행을 위해서 필요한 작업
 
@@ -16,6 +18,104 @@ DB_DIAL=[DB용_instance_의_DB_DIALECT]
 2. ``npm i`` 를 실행하여 패키지들을 모두 설치합니다.
 
 3. ``npm run serve`` 를 하면 개발용 서버가 실행됩니다.
+
+## DB Table
+
+테이블은 하나만 사용합니다.
+
+1. Delivery
+    - address : String (VARCHAR, 100)
+    - orderer : String (VARCHAR, 100)
+    - menu : String (VARCHAR, 100)
+    
+## RequestMapping
+
+1. ``GET /delivery``
+
+    * request query params
+        * id (optional)
+    
+    * response
+        1. id 가 없으면 모든 데이터를 반환
+        2. id 가 있으면 해당 id 에 데이터를 반환
+
+2. ``POST /delivery``
+
+    * request body
+        ```
+        {
+            "address": "delivery 주소",
+            "orderer": "delivery 주문자",
+            "menu": "주문한 메뉴"
+        }
+        ```
+    
+    * response data
+        ```
+        {
+            "id": "1",
+            "address": "서울시 송파구 루터회관 14층 우아한테크코스",
+            "orderer": "루피",
+            "menu": "삼계탕",
+            "createdAt": "[timestamp]"
+            "updatedAt": "[timestamp]"
+            "deletedAt": "null"
+        }
+        ```
+
+3. ``PATCH /delivery``
+
+    * request body
+        ```
+        {
+            "id": "변경할 id",
+            "address": "변경할 주소"
+        }
+        ```
+      
+    * response data
+        * ``200 OK``
+        ```
+        {
+            "id": "1",
+            "address": "변경된 주소",
+            "orderer": "루피",
+            "menu": "삼계탕",
+            "createdAt": "[timestamp]"
+            "updatedAt": "[timestamp_변경된_시간]"
+            "deletedAt": "null"
+        }
+        ```
+        * ``404 NOT FOUND``
+        ```
+        {
+            "message": "문제가 발생하였습니다."
+        }
+        ```
+
+4. ``DELETE /delivery``
+    * request body
+    ```
+    {
+        "id": "1"
+    }
+    ```
+   
+   * response data
+       * ``200 OK``
+       ```
+       {
+            "message": "배달이 완료되었습니다.",
+            "deletedAt": [timestamp]
+       }
+       ```
+       * ``404 NOT FOUND``
+       ```
+       {
+            "message": "태풍에 배달 오토바이가 날아가버렸습니다.",
+            "deletedAt": [timestamp]
+       }
+       ```
 
 ## DB Settings
 
