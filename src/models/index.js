@@ -13,6 +13,6 @@ const sequelize = new Sequelize(
 db.sequelize = sequelize
 db.Sequelize = Sequelize
 
-require('./delivery')(sequelize, Sequelize)
+require('./Delivery')(sequelize, Sequelize)
 
 module.exports = db

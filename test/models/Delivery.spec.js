@@ -5,7 +5,7 @@ const {
   checkPropertyExists
 } = require('sequelize-test-helpers')
 
-const Delivery = require('../../src/models/delivery')
+const Delivery = require('../../src/models/Delivery')
 
 describe('Delivery.js', () => {
   const DeliveryModel = Delivery(sequelize, dataTypes)
