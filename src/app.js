@@ -1,12 +1,13 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-// const { sequelize } = require('./models')
+const { sequelize } = require('./models')
 
 const app = express()
 const router = express.Router()
+const deliveryMapping = require('./requestmapping/DeliveryMapping')
 
-// sequelize.sync()
+sequelize.sync()
 
 app.use(bodyParser.json())
 app.use(cors())
@@ -17,5 +18,7 @@ router.get('/', (req, res) => {
     message: 'test router'
   })
 })
+
+app.use('/delivery', deliveryMapping)
 
 app.listen(process.env.PORT || 8081)
