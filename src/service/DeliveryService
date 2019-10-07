@@ -1,0 +1,76 @@
+const { Delivery } = require('../models')
+const logger = require('../logger')
+
+const jsonParser = (json) => (
+  JSON.parse(JSON.stringify(json))
+)
+
+const findAll = async () => {
+  try {
+    const deliveries = await Delivery.findAll()
+    return jsonParser(deliveries)
+  } catch (error) {
+    logger.error(error)
+    throw new Error(error)
+  }
+}
+
+const findById = async (id) => {
+  try {
+    const delivery = await Delivery.findOne({
+      where: {id}
+    });
+    return jsonParser(delivery)
+  } catch (error) {
+    logger.error(error)
+    throw new Error(error)
+  }
+}
+
+const save = async (address, orderer, menu) => {
+  try {
+    let savedDelivery = await Delivery.create({
+      address,
+      orderer,
+      menu
+    });
+    return jsonParser(savedDelivery)
+  } catch (error) {
+    logger.error(error)
+    throw new Error(error)
+  }
+}
+
+const updateAddress = async (id, address) => {
+  try {
+    const update = await Delivery.update({
+      address
+    }, {
+      where: { id }
+    })
+    const updatedDelivery = await findById(update[0])
+    return jsonParser(updatedDelivery)
+  } catch (error) {
+    logger.error(error)
+    throw new Error(error)
+  }
+}
+
+const destroy = async (id) => {
+  try {
+    await Delivery.destroy({
+      where: {id}
+    })
+  } catch (error) {
+    logger.error(error)
+    throw new Error(error)
+  }
+}
+
+module.exports = {
+  findAll,
+  findById,
+  save,
+  updateAddress,
+  destroy
+}
