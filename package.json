@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "./node_modules/nodemon/bin/nodemon.js src/app.js"
+    "serve": "./node_modules/nodemon/bin/nodemon.js src/app.js",
+    "test": "./node_modules/.bin/mocha $(find ./ -name '*.js) --recursive -w"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^5.16.0",
-    "nodemon": "^1.19.1"
+    "mocha": "^6.2.1",
+    "nodemon": "^1.19.1",
+    "sequelize-test-helpers": "^1.1.2",
+    "sinon": "^7.5.0"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
