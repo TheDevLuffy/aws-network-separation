@@ -7,10 +7,10 @@ module.exports = {
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
-    dialect: process.env.DB_DIAL,
     external: {
       port: process.env.REMOTE_PORT,
-      host: process.env.REMOTE_HOST
+      host: process.env.REMOTE_HOST,
+      dialect: process.env.DB_DIAL
     }
   }
 }

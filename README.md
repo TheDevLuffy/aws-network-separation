@@ -19,6 +19,23 @@ DB_DIAL=[DB용_instance_의_DB_DIALECT]
 
 3. ``npm run serve`` 를 하면 개발용 서버가 실행됩니다.
 
+## AWS EC2 인스턴스
+
+### Server 는 서버만 띄워둡니다.
+
+
+### DB 는 DB만 띄워둡니다.
+1. mariadb 설치
+```
+sudo apt-get install mariadb-server
+```
+
+2. mariadb 원격 접속 허용 유저 생성
+```
+grant all privileges on [DB_NAME].* to '[REMOTE_USER]'@'[REMOTE_INSTANCE_IP]' identified by '[REMOTE_USER_PASSWORD]';
+```
+
+
 ## DB Table
 
 테이블은 하나만 사용합니다.
