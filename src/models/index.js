@@ -7,7 +7,7 @@ const sequelize = new Sequelize(
   dbSetting.database,
   dbSetting.username,
   dbSetting.password,
-  dbSetting
+  dbSetting.external
 )
 
 db.sequelize = sequelize
