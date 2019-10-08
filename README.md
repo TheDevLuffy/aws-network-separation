@@ -6,6 +6,10 @@
 
 ## AWS EC2 인스턴스
 
+### 구조
+
+![Alt text](https://raw.githubusercontent.com/TheDevLuffy/aws-network-separation/master/structure.png)
+
 ### Server 는 서버만 띄워둡니다.
 
 해당 디렉터리의 코드를 clone 받아 실행합니다.
