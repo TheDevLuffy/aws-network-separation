@@ -21,4 +21,6 @@ router.get('/', (req, res) => {
 
 app.use('/delivery', deliveryMapping)
 
-app.listen(process.env.PORT || 8081)
+app.listen(process.env.PORT || 8081, () => {
+  console.log(`App Started on Port ${process.env.PORT || 8081}`)
+})
